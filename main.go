@@ -14,6 +14,10 @@ type EntityResponse struct {
 }
 
 func main() {
+
+	const (
+		port = "3300"
+	)
 	http.HandleFunc("/entityVerification", func(w http.ResponseWriter, r *http.Request) {
 		// Check for the "token" header
 		token := r.Header.Get("token")
@@ -41,8 +45,8 @@ func main() {
 	})
 
 	// Start the server on port 8080
-	log.Println("Starting server on port 8080...")
-	err := http.ListenAndServe(":3300", nil)
+	log.Printf("Starting server on port %v...", port)
+	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}

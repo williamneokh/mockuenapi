@@ -15,6 +15,12 @@ type EntityResponse struct {
 
 func main() {
 	http.HandleFunc("/entityVerification", func(w http.ResponseWriter, r *http.Request) {
+		// Check for the "token" header
+		token := r.Header.Get("token")
+		if token != "5577" {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
 		// Parse query parameters
 		uen := r.URL.Query().Get("uen")
 

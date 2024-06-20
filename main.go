@@ -41,7 +41,7 @@ func main() {
 
 		// Set content type and write response
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(jsonResponse)
+		_, _ = w.Write(jsonResponse)
 	})
 
 	// Start the server on port 8080
